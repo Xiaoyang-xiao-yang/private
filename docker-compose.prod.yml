@@ -4,7 +4,6 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: todo-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -23,7 +22,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: todo-backend
     restart: always
     environment:
       DB_HOST: mysql
@@ -42,7 +40,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: todo-frontend
     restart: always
     ports:
       - "80:80"
