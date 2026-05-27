@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,7 +23,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            set -eo pipefail
             cd /opt/todolist
             git pull origin main
-            docker-compose -f docker-compose.prod.yml up --build -d
+            docker compose -f docker-compose.prod.yml up --build -d
             docker image prune -f
