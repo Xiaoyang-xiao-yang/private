@@ -1,0 +1,19 @@
+# 依赖
+node_modules/
+
+# 敏感信息
+.env
+
+# 构建产物
+frontend/build/
+
+# Docker 数据卷
+mysql-data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
