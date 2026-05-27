@@ -3,6 +3,8 @@ node_modules/
 
 # 敏感信息
 .env
+.env*.local
+.env.local
 
 # 构建产物
 frontend/build/
@@ -17,3 +19,5 @@ mysql-data/
 # OS
 .DS_Store
 Thumbs.db
+*.log
+desktop.ini
