@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-todoapp123}
       MYSQL_DATABASE: todo_db
     volumes:
       - /data/mysql:/var/lib/mysql
@@ -18,7 +18,7 @@ services:
           "-h",
           "localhost",
           "-uroot",
-          "-p${MYSQL_ROOT_PASSWORD}",
+          "-p${MYSQL_ROOT_PASSWORD:-todoapp123}",
         ]
       interval: 5s
       timeout: 5s
@@ -33,7 +33,7 @@ services:
       DB_HOST: mysql
       DB_PORT: 3306
       DB_USER: root
-      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD:-todoapp123}
       DB_NAME: todo_db
       SERVER_PORT: 3001
     depends_on:
